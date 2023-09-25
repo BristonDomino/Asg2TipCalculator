@@ -18,6 +18,8 @@ public class MainActivity extends AppCompatActivity
     CheckBox outstandingService;
     TextView totalTipText;
     TextView tipPerPersonText;
+    public static final double NORMAL_TIP_RATE = 0.15;
+    public static final double OUTSTANDING_TIP_RATE = 0.20;
 
     @Override
     protected void onCreate(Bundle savedInstanceState)
@@ -31,6 +33,7 @@ public class MainActivity extends AppCompatActivity
         totalTipText = findViewById(R.id.totalTipAmount);
         tipPerPersonText = findViewById(R.id.tipPerPersonAmount);
 
+
         Button calculateBtn = findViewById(R.id.calculatorTIpButton);
         calculateBtn.setOnClickListener(new View.OnClickListener()
         {
@@ -41,7 +44,8 @@ public class MainActivity extends AppCompatActivity
                 int people = Integer.parseInt(numPeople.getText().toString());
 
                 // This sets the tip rate to 0.20 if the outstanding service checkbox is check, otherwise sets it to 0.15
-                double tipRate = outstandingService.isChecked() ? 0.20 : 0.15;
+                double tipRate = outstandingService.isChecked() ? OUTSTANDING_TIP_RATE : NORMAL_TIP_RATE;
+
 
                 // These calculate the total tip amount and the tip per person
                 double totalTip = bill * tipRate;
